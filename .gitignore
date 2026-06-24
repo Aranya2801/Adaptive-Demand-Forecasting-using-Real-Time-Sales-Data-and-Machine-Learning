@@ -1,0 +1,60 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+build/
+dist/
+
+# Environment
+.env
+*.env.local
+
+# Data
+data/raw/*
+data/processed/*
+data/external/*
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+!data/external/.gitkeep
+
+# Models
+models/trained/*
+models/registry/*
+!models/trained/.gitkeep
+!models/registry/.gitkeep
+*.pkl
+*.h5
+*.pt
+*.onnx
+
+# MLflow / DVC
+mlruns/
+mlartifacts/
+.dvc/cache
+.dvc/tmp
+
+# Logs
+logs/
+*.log
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Reports
+reports/figures/*.png
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Test coverage
+.coverage
+htmlcov/
+.pytest_cache/
