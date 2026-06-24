@@ -1,0 +1,138 @@
+<svg viewBox="0 0 900 520" xmlns="http://www.w3.org/2000/svg" width="900" height="520">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#6366f1"/>
+    </marker>
+    <marker id="arrow-cyan" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#06b6d4"/>
+    </marker>
+    <style>
+      .box { rx: 8; }
+      .label { font-family: 'Segoe UI', sans-serif; font-size: 13px; font-weight: 600; }
+      .sub { font-family: 'Segoe UI', sans-serif; font-size: 10px; fill: #94a3b8; }
+      .title { font-family: 'Segoe UI', sans-serif; font-size: 15px; font-weight: 800; }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="900" height="520" fill="#0d1117"/>
+
+  <!-- Title -->
+  <text x="450" y="35" text-anchor="middle" class="title" fill="#e2e8f0" font-size="18">
+    Adaptive Demand Forecasting — System Architecture
+  </text>
+
+  <!-- === ROW 1: Data Sources === -->
+  <rect x="30" y="60" width="130" height="70" rx="8" fill="#1e293b" stroke="#06b6d4" stroke-width="1.5"/>
+  <text x="95" y="88" text-anchor="middle" class="label" fill="#67e8f9">Data Sources</text>
+  <text x="95" y="103" text-anchor="middle" class="sub">CSV / Excel / POS</text>
+  <text x="95" y="117" text-anchor="middle" class="sub">Shopify / WooCommerce</text>
+
+  <rect x="180" y="60" width="130" height="70" rx="8" fill="#1e293b" stroke="#06b6d4" stroke-width="1.5"/>
+  <text x="245" y="88" text-anchor="middle" class="label" fill="#67e8f9">Kaggle Datasets</text>
+  <text x="245" y="103" text-anchor="middle" class="sub">Rossmann / M5 / Walmart</text>
+  <text x="245" y="117" text-anchor="middle" class="sub">Favorita / Online Retail</text>
+
+  <!-- === Kafka Streaming === -->
+  <rect x="380" y="55" width="150" height="80" rx="8" fill="#1e1b4b" stroke="#6366f1" stroke-width="2"/>
+  <text x="455" y="80" text-anchor="middle" class="label" fill="#a5b4fc">Apache Kafka</text>
+  <text x="455" y="97" text-anchor="middle" class="sub">sales-transactions</text>
+  <text x="455" y="112" text-anchor="middle" class="sub">demand-alerts</text>
+  <text x="455" y="124" text-anchor="middle" class="sub">forecast-updates</text>
+
+  <!-- Arrows from data to kafka -->
+  <line x1="160" y1="95" x2="378" y2="95" stroke="#06b6d4" stroke-width="1.5" marker-end="url(#arrow-cyan)"/>
+  <line x1="310" y1="95" x2="378" y2="95" stroke="#06b6d4" stroke-width="1.5"/>
+
+  <!-- === Feature Store === -->
+  <rect x="590" y="55" width="150" height="80" rx="8" fill="#1e293b" stroke="#10b981" stroke-width="1.5"/>
+  <text x="665" y="80" text-anchor="middle" class="label" fill="#6ee7b7">Feature Store</text>
+  <text x="665" y="97" text-anchor="middle" class="sub">Redis (online, &lt;1ms)</text>
+  <text x="665" y="112" text-anchor="middle" class="sub">PostgreSQL (offline)</text>
+  <text x="665" y="125" text-anchor="middle" class="sub">63 features</text>
+
+  <line x1="530" y1="95" x2="588" y2="95" stroke="#6366f1" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- === ROW 2: ML Models === -->
+  <rect x="30" y="190" width="820" height="90" rx="8" fill="#1a1040" stroke="#8b5cf6" stroke-width="2"/>
+  <text x="440" y="215" text-anchor="middle" class="title" fill="#c4b5fd" font-size="14">🤖 ML Model Zoo — Ensemble Stacking</text>
+
+  <!-- Individual model boxes -->
+  <rect x="50" y="225" width="88" height="42" rx="5" fill="#312e81" stroke="#6366f1" stroke-width="1"/>
+  <text x="94" y="244" text-anchor="middle" class="label" fill="#a5b4fc" font-size="11">XGBoost</text>
+  <text x="94" y="258" text-anchor="middle" class="sub">n=800</text>
+
+  <rect x="148" y="225" width="88" height="42" rx="5" fill="#312e81" stroke="#6366f1" stroke-width="1"/>
+  <text x="192" y="244" text-anchor="middle" class="label" fill="#a5b4fc" font-size="11">LightGBM</text>
+  <text x="192" y="258" text-anchor="middle" class="sub">n=1000</text>
+
+  <rect x="246" y="225" width="88" height="42" rx="5" fill="#312e81" stroke="#6366f1" stroke-width="1"/>
+  <text x="290" y="244" text-anchor="middle" class="label" fill="#a5b4fc" font-size="11">CatBoost</text>
+  <text x="290" y="258" text-anchor="middle" class="sub">depth=8</text>
+
+  <rect x="344" y="225" width="88" height="42" rx="5" fill="#164e63" stroke="#06b6d4" stroke-width="1"/>
+  <text x="388" y="244" text-anchor="middle" class="label" fill="#67e8f9" font-size="11">Prophet</text>
+  <text x="388" y="258" text-anchor="middle" class="sub">seasonal</text>
+
+  <rect x="442" y="225" width="88" height="42" rx="5" fill="#4c1d95" stroke="#8b5cf6" stroke-width="1"/>
+  <text x="486" y="244" text-anchor="middle" class="label" fill="#c4b5fd" font-size="11">LSTM</text>
+  <text x="486" y="258" text-anchor="middle" class="sub">hidden=128</text>
+
+  <rect x="540" y="225" width="88" height="42" rx="5" fill="#4c1d95" stroke="#8b5cf6" stroke-width="1"/>
+  <text x="584" y="244" text-anchor="middle" class="label" fill="#c4b5fd" font-size="11">GRU</text>
+  <text x="584" y="258" text-anchor="middle" class="sub">hidden=128</text>
+
+  <rect x="638" y="225" width="98" height="42" rx="5" fill="#4c1d95" stroke="#8b5cf6" stroke-width="1"/>
+  <text x="687" y="244" text-anchor="middle" class="label" fill="#c4b5fd" font-size="11">Transformer</text>
+  <text x="687" y="258" text-anchor="middle" class="sub">d=64, h=4</text>
+
+  <rect x="746" y="225" width="90" height="42" rx="5" fill="#14532d" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="791" y="244" text-anchor="middle" class="label" fill="#86efac" font-size="11">Ensemble</text>
+  <text x="791" y="258" text-anchor="middle" class="sub">Stacking+Ridge</text>
+
+  <!-- Feature store to ML arrow -->
+  <line x1="440" y1="135" x2="440" y2="188" stroke="#8b5cf6" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- === ROW 3: Services === -->
+  <!-- FastAPI -->
+  <rect x="30" y="340" width="150" height="70" rx="8" fill="#1e293b" stroke="#10b981" stroke-width="1.5"/>
+  <text x="105" y="365" text-anchor="middle" class="label" fill="#6ee7b7">FastAPI</text>
+  <text x="105" y="381" text-anchor="middle" class="sub">REST + JWT</text>
+  <text x="105" y="395" text-anchor="middle" class="sub">/forecast /analytics</text>
+  <text x="105" y="409" text-anchor="middle" class="sub">/explain /drift /alerts</text>
+
+  <!-- MLflow -->
+  <rect x="200" y="340" width="130" height="70" rx="8" fill="#1e293b" stroke="#f59e0b" stroke-width="1.5"/>
+  <text x="265" y="365" text-anchor="middle" class="label" fill="#fcd34d">MLflow</text>
+  <text x="265" y="381" text-anchor="middle" class="sub">Experiment tracking</text>
+  <text x="265" y="395" text-anchor="middle" class="sub">Model registry</text>
+
+  <!-- Evidently -->
+  <rect x="350" y="340" width="130" height="70" rx="8" fill="#1e293b" stroke="#ef4444" stroke-width="1.5"/>
+  <text x="415" y="365" text-anchor="middle" class="label" fill="#fca5a5">Evidently AI</text>
+  <text x="415" y="381" text-anchor="middle" class="sub">Data drift (PSI)</text>
+  <text x="415" y="395" text-anchor="middle" class="sub">Target drift (KS)</text>
+
+  <!-- Airflow -->
+  <rect x="500" y="340" width="130" height="70" rx="8" fill="#1e293b" stroke="#06b6d4" stroke-width="1.5"/>
+  <text x="565" y="365" text-anchor="middle" class="label" fill="#67e8f9">Airflow</text>
+  <text x="565" y="381" text-anchor="middle" class="sub">Retraining DAG</text>
+  <text x="565" y="395" text-anchor="middle" class="sub">Feature materialize</text>
+
+  <!-- Prometheus/Grafana -->
+  <rect x="650" y="340" width="130" height="70" rx="8" fill="#1e293b" stroke="#f97316" stroke-width="1.5"/>
+  <text x="715" y="365" text-anchor="middle" class="label" fill="#fdba74">Prometheus</text>
+  <text x="715" y="381" text-anchor="middle" class="sub">+ Grafana</text>
+  <text x="715" y="395" text-anchor="middle" class="sub">API monitoring</text>
+
+  <!-- Arrow from ensemble to services -->
+  <line x1="440" y1="280" x2="440" y2="338" stroke="#22c55e" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- === ROW 4: Dashboard & Clients === -->
+  <rect x="30" y="460" width="820" height="48" rx="8" fill="#1e293b" stroke="#a78bfa" stroke-width="1.5"/>
+  <text x="440" y="479" text-anchor="middle" class="title" fill="#c4b5fd" font-size="13">Streamlit Dashboard (8 Pages)</text>
+  <text x="440" y="498" text-anchor="middle" class="sub">Executive │ Forecast │ Sales │ Inventory │ Model Monitoring │ Drift │ Anomaly │ Explainability</text>
+
+  <!-- FastAPI to Dashboard -->
+  <line x1="105" y1="410" x2="105" y2="458" stroke="#10b981" stroke-width="1.5" marker-end="url(#arrow)"/>
+</svg>
