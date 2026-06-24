@@ -1,0 +1,102 @@
+<svg viewBox="0 0 800 420" xmlns="http://www.w3.org/2000/svg" width="800" height="420">
+  <defs>
+    <linearGradient id="barGrad1" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#6366f1;stop-opacity:0.9"/>
+      <stop offset="100%" style="stop-color:#8b5cf6;stop-opacity:0.9"/>
+    </linearGradient>
+    <linearGradient id="barGrad2" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#06b6d4;stop-opacity:0.9"/>
+      <stop offset="100%" style="stop-color:#0ea5e9;stop-opacity:0.9"/>
+    </linearGradient>
+    <linearGradient id="bestGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#22c55e;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#16a34a;stop-opacity:1"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="800" height="420" fill="#0d1117"/>
+
+  <!-- Title -->
+  <text x="400" y="32" text-anchor="middle" font-family="'Segoe UI',sans-serif"
+        font-size="17" font-weight="800" fill="#e2e8f0">
+    Model Benchmark — SMAPE (%) on Rossmann Store Sales
+  </text>
+  <text x="400" y="52" text-anchor="middle" font-family="'Segoe UI',sans-serif"
+        font-size="12" fill="#64748b">Lower is better · 30-day walk-forward holdout</text>
+
+  <!-- Axes -->
+  <line x1="180" y1="70" x2="180" y2="360" stroke="#334155" stroke-width="1.5"/>
+  <line x1="180" y1="360" x2="760" y2="360" stroke="#334155" stroke-width="1.5"/>
+
+  <!-- X-axis gridlines and labels -->
+  <g font-family="monospace" font-size="11" fill="#64748b">
+    <line x1="180" y1="360" x2="180" y2="365" stroke="#475569"/>
+    <text x="180" y="378" text-anchor="middle">0%</text>
+    <line x1="326" y1="70" x2="326" y2="360" stroke="#1e293b" stroke-width="1"/>
+    <text x="326" y="378" text-anchor="middle">5%</text>
+    <line x1="472" y1="70" x2="472" y2="360" stroke="#1e293b" stroke-width="1"/>
+    <text x="472" y="378" text-anchor="middle">10%</text>
+    <line x1="618" y1="70" x2="618" y2="360" stroke="#1e293b" stroke-width="1"/>
+    <text x="618" y="378" text-anchor="middle">15%</text>
+    <line x1="764" y1="70" x2="764" y2="360" stroke="#1e293b" stroke-width="1"/>
+    <text x="764" y="378" text-anchor="middle">20%</text>
+  </g>
+
+  <!-- scale: 1% = 29.2px, bar start = 180 -->
+  <!-- Models: Ensemble 9.3, Transformer 10.0, LightGBM 10.4, CatBoost 10.6, XGBoost 10.9, GRU 11.1, LSTM 11.3, Prophet 13.8 -->
+
+  <!-- Bar heights (y positions): 8 bars, spacing = 36px, start y=80 -->
+  <!-- Ensemble (best) -->
+  <rect x="181" y="80"  width="271.6" height="28" fill="url(#bestGrad)" rx="3"/>
+  <text x="174" y="99"  text-anchor="end" font-family="'Segoe UI',sans-serif" font-size="12" font-weight="600" fill="#86efac">Ensemble</text>
+  <text x="459" y="99"  font-family="monospace" font-size="12" font-weight="700" fill="#22c55e">9.3%</text>
+  <text x="665" y="99"  font-family="'Segoe UI',sans-serif" font-size="11" fill="#94a3b8">R²=0.871 ← Best</text>
+
+  <!-- Transformer -->
+  <rect x="181" y="116" width="292.0" height="28" fill="url(#barGrad2)" rx="3"/>
+  <text x="174" y="135" text-anchor="end" font-family="'Segoe UI',sans-serif" font-size="12" font-weight="600" fill="#67e8f9">Transformer</text>
+  <text x="479" y="135" font-family="monospace" font-size="12" fill="#67e8f9">10.0%</text>
+  <text x="665" y="135" font-family="'Segoe UI',sans-serif" font-size="11" fill="#94a3b8">R²=0.858</text>
+
+  <!-- LightGBM -->
+  <rect x="181" y="152" width="303.7" height="28" fill="url(#barGrad1)" rx="3"/>
+  <text x="174" y="171" text-anchor="end" font-family="'Segoe UI',sans-serif" font-size="12" font-weight="600" fill="#a5b4fc">LightGBM</text>
+  <text x="491" y="171" font-family="monospace" font-size="12" fill="#a5b4fc">10.4%</text>
+  <text x="665" y="171" font-family="'Segoe UI',sans-serif" font-size="11" fill="#94a3b8">R²=0.853</text>
+
+  <!-- CatBoost -->
+  <rect x="181" y="188" width="309.5" height="28" fill="url(#barGrad1)" rx="3" opacity="0.85"/>
+  <text x="174" y="207" text-anchor="end" font-family="'Segoe UI',sans-serif" font-size="12" font-weight="600" fill="#a5b4fc">CatBoost</text>
+  <text x="497" y="207" font-family="monospace" font-size="12" fill="#a5b4fc">10.6%</text>
+  <text x="665" y="207" font-family="'Segoe UI',sans-serif" font-size="11" fill="#94a3b8">R²=0.850</text>
+
+  <!-- XGBoost -->
+  <rect x="181" y="224" width="318.4" height="28" fill="url(#barGrad1)" rx="3" opacity="0.75"/>
+  <text x="174" y="243" text-anchor="end" font-family="'Segoe UI',sans-serif" font-size="12" font-weight="600" fill="#a5b4fc">XGBoost</text>
+  <text x="506" y="243" font-family="monospace" font-size="12" fill="#a5b4fc">10.9%</text>
+  <text x="665" y="243" font-family="'Segoe UI',sans-serif" font-size="11" fill="#94a3b8">R²=0.847</text>
+
+  <!-- GRU -->
+  <rect x="181" y="260" width="324.1" height="28" fill="#4c1d95" rx="3" opacity="0.85"/>
+  <text x="174" y="279" text-anchor="end" font-family="'Segoe UI',sans-serif" font-size="12" font-weight="600" fill="#c4b5fd">GRU</text>
+  <text x="512" y="279" font-family="monospace" font-size="12" fill="#c4b5fd">11.1%</text>
+  <text x="665" y="279" font-family="'Segoe UI',sans-serif" font-size="11" fill="#94a3b8">R²=0.841</text>
+
+  <!-- LSTM -->
+  <rect x="181" y="296" width="329.9" height="28" fill="#4c1d95" rx="3" opacity="0.75"/>
+  <text x="174" y="315" text-anchor="end" font-family="'Segoe UI',sans-serif" font-size="12" font-weight="600" fill="#c4b5fd">LSTM</text>
+  <text x="517" y="315" font-family="monospace" font-size="12" fill="#c4b5fd">11.3%</text>
+  <text x="665" y="315" font-family="'Segoe UI',sans-serif" font-size="11" fill="#94a3b8">R²=0.838</text>
+
+  <!-- Prophet -->
+  <rect x="181" y="332" width="403.0" height="28" fill="#7c3aed" rx="3" opacity="0.5"/>
+  <text x="174" y="351" text-anchor="end" font-family="'Segoe UI',sans-serif" font-size="12" font-weight="600" fill="#7c3aed">Prophet</text>
+  <text x="591" y="351" font-family="monospace" font-size="12" fill="#7c3aed">13.8%</text>
+  <text x="665" y="351" font-family="'Segoe UI',sans-serif" font-size="11" fill="#64748b">R²=0.781</text>
+
+  <!-- Legend note -->
+  <text x="400" y="400" text-anchor="middle" font-family="'Segoe UI',sans-serif"
+        font-size="11" fill="#475569">
+    Ensemble stacking (XGB+LGBM+CatBoost+Prophet+LSTM+GRU+Transformer → Ridge meta-model) achieves best SMAPE
+  </text>
+</svg>
