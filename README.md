@@ -35,7 +35,7 @@ It is designed to be:
 
 ## 🏗️ System Architecture
 
-![Architecture](assets/diagrams/architecture.svg)
+![Architecture](architecture.svg)
 
 ```
 ┌─────────────┐     ┌──────────────┐     ┌────────────────┐     ┌──────────────┐
