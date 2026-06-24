@@ -173,7 +173,7 @@ Benchmarked on the **Rossmann Store Sales** dataset (rolling 30-day holdout):
 
 > Full benchmarking methodology in [`docs/RESEARCH.md`](docs/RESEARCH.md) and reproducible via [`notebooks/05_model_benchmarking.ipynb`](notebooks/).
 
-![Benchmark Chart](assets/diagrams/benchmark_chart.svg)
+![Benchmark Chart](benchmark_chart.svg)
 
 ---
 
